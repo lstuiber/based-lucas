@@ -1,3 +1,5 @@
+import { addHabits } from './update-habit'
+
 
 export function addHabit(element) {
     
@@ -11,7 +13,6 @@ function addElement(){
     let firstEl = true;
     let apendEl = "add-form"
     const addList =document.getElementsByClassName("inputLabel").length;
-    console.log(addList)
     if (document.getElementsByClassName("add-button").length < 1){
             const createForm = document.createElement("form");
         createForm.id = "add-form";
@@ -19,7 +20,6 @@ function addElement(){
     }
 
     if (document.getElementsByClassName("inputLabel").length > 0) {
-        console.log("test")
         firstEl = false;
     }
     const newDiv = document.createElement('div');
@@ -36,10 +36,6 @@ function addElement(){
     newInput.setAttribute("type", "checkbox");
 
 
-
-    // const currentElement = document.getElementById("app");
-    console.log(apendEl);
-    console.log(document.getElementById(apendEl));
     document.getElementById(apendEl).appendChild(newDiv);
     document.getElementById(`input${addList}`).appendChild(newLabel);
     document.getElementById(`input${addList}`).appendChild(newInput);
@@ -50,8 +46,9 @@ function addElement(){
         addButton.textContent = "Add";
         addButton.className="add-button";
         addButton.id = "add-habit"
+        addButton.type= "button"
         document.getElementById("add-form").appendChild(addButton);
-
+        addHabits(document.querySelector('#add-habit'));
 
 
 
