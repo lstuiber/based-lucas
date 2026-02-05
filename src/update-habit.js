@@ -1,7 +1,7 @@
 
 export function addHabits(element) {
     element.addEventListener('click', (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         updateHabits();
     })
 
