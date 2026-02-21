@@ -1,5 +1,5 @@
 import { addHabits } from './update-habit'
-
+import { removeHabits} from './update-habit'
 
 export function addHabit(element) {
     
@@ -47,6 +47,8 @@ function addFormInputs(addList, apendEl) {
     document.getElementById(apendEl).appendChild(newDiv);
     document.getElementById(`input${addList}`).appendChild(newLabel);
     document.getElementById(`input${addList}`).appendChild(removeButton);
+
+    removeHabits(document.querySelector('#remove-habit'));
 }
 
 function addButton() {

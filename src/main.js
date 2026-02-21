@@ -10,3 +10,5 @@ document.querySelector('#app').innerHTML = `
 `
 
 addHabit(document.querySelector('#habit'))
+
+
