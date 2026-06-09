@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://api.weather.gov/gridpoints/IWX/19,80/stations\" -H \"User-Agent: based-lucas-app lucasstuiber@gmail.com\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); s=d['features'][0]; print\\('station:', s['properties']['stationIdentifier'], '-', s['properties']['name']\\)\")"
+    ]
+  }
+}

@@ -24,8 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -35,11 +33,52 @@ h1 {
   line-height: 1.1;
 }
 
-#app {
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 1.5rem;
+  height: 52px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar__link {
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.navbar__link:hover {
+  color: #fff;
+  background-color: #2a2a2a;
+}
+
+.navbar__link--active {
+  color: #fff;
+  background-color: #2e2e3e;
 }
 
 .logo {
@@ -80,6 +119,421 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.tile {
+  background-color: #1a1a1a;
+  border: 2px solid #333;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  min-width: 160px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.tile__label {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.tile__score-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.tile__score {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tile__trend--lg {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tile__trend--sm {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-left: 0.3rem;
+}
+
+.tile__trend--up      { color: #4ade80; }
+.tile__trend--down    { color: #f87171; }
+.tile__trend--neutral { color: #555; }
+
+.tile__date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.tile--good  { border-color: #4ade80; }
+.tile--good  .tile__score { color: #4ade80; }
+
+.tile--fair  { border-color: #facc15; }
+.tile--fair  .tile__score { color: #facc15; }
+
+.tile--poor  { border-color: #f87171; }
+.tile--poor  .tile__score { color: #f87171; }
+
+.tile--loading .tile__score { color: #555; }
+
+.tile--clickable {
+  cursor: pointer;
+  user-select: none;
+}
+.tile--clickable:hover {
+  filter: brightness(1.1);
+}
+
+.tile__averages {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.tile__avg-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+  font-size: 0.85rem;
+}
+
+.tile__avg-label {
+  color: #888;
+}
+
+.tile__avg-value {
+  font-weight: 600;
+}
+
+.tile__avgs-loading {
+  font-size: 0.85rem;
+  color: #555;
+  text-align: center;
+  padding: 0.25rem 0;
+}
+
+/* --- Withings tile -------------------------------------------------------- */
+
+.withings-tile {
+  border-color: #60a5fa;
+}
+
+.withings-tile .tile__score {
+  color: #60a5fa;
+}
+
+.withings-tile__weight {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.withings-tile__unit {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #888;
+  align-self: flex-end;
+  margin-bottom: 0.25rem;
+}
+
+.withings-tile__connect-score {
+  color: #555;
+}
+
+.withings-tile__connect-btn {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  padding: 0.4em 1em;
+}
+
+/* --- Weather tiles -------------------------------------------------------- */
+
+.weather-page {
+  width: 100%;
+}
+
+.weather-current-tile {
+  min-width: 260px;
+  max-width: 320px;
+}
+
+.weather-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin: 0.75rem 0 0.25rem;
+}
+
+.weather-temp {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #60a5fa;
+}
+
+.weather-feels {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+.weather-desc {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.75rem 0 0.25rem;
+  color: #ccc;
+}
+
+.weather-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.weather-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+}
+
+.weather-detail__icon {
+  font-size: 1rem;
+  width: 1.4rem;
+  text-align: center;
+}
+
+.weather-detail__label {
+  color: #888;
+  min-width: 4.5rem;
+}
+
+.weather-detail__value {
+  font-weight: 600;
+  color: #ddd;
+}
+
+.weather-station {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #333;
+  font-size: 0.78rem;
+  color: #666;
+}
+
+.weather-updated {
+  color: #555;
+}
+
+/* Hourly tile */
+.weather-hourly-tile {
+  flex: 1;
+  min-width: 300px;
+  max-width: 900px;
+  overflow: hidden;
+}
+
+.weather-hourly-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.25rem;
+  padding: 0.75rem 0 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+
+.weather-hourly-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.weather-hourly-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.weather-hourly-scroll::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+
+.weather-hour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 58px;
+  padding: 0.5rem 0.25rem;
+  border-radius: 8px;
+  transition: background-color 0.15s;
+}
+
+.weather-hour:hover {
+  background-color: #2a2a2a;
+}
+
+.weather-hour__time {
+  font-size: 0.72rem;
+  color: #888;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.weather-hour__icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.weather-hour__temp {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+.weather-hour__wind {
+  font-size: 0.7rem;
+  color: #777;
+  white-space: nowrap;
+}
+
+.weather-hour__precip {
+  font-size: 0.7rem;
+  color: #60a5fa;
+  white-space: nowrap;
+}
+
+.weather-hour__precip--none {
+  color: #444;
+}
+
+/* --- Radar map ------------------------------------------------------------ */
+
+.radar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.radar-map {
+  width: 100%;
+  height: 520px;
+  border-radius: 12px;
+  border: 2px solid #333;
+  overflow: hidden;
+}
+
+.radar-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.25rem;
+  font-size: 0.85rem;
+}
+
+.radar-controls__btn {
+  font-size: 1.1rem;
+  padding: 0.3em 0.6em;
+  min-width: 2.4rem;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+  border-color: #444;
+  flex-shrink: 0;
+}
+
+.radar-controls__slider-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.radar-controls__track-labels {
+  display: flex;
+  font-size: 0.65rem;
+  color: #666;
+  position: relative;
+  padding: 0 1px;
+}
+
+.radar-controls__track-labels span:last-child {
+  position: absolute;
+}
+
+.radar-controls__slider {
+  width: 100%;
+  accent-color: #60a5fa;
+  cursor: pointer;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.radar-controls__time {
+  font-weight: 600;
+  color: #ccc;
+  min-width: 4.5rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.radar-controls__time--forecast {
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.radar-controls__badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: #1e40af;
+  color: #93c5fd;
+  padding: 1px 4px;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+
+.radar-controls__source {
+  color: #555;
+  flex-shrink: 0;
+}
+
+.radar-controls__source a {
+  color: #555;
+}
+
+.radar-no-forecast {
+  font-size: 0.78rem;
+  color: #555;
+  margin: 0.25rem 0 0;
+  text-align: left;
+}
+
+.radar-placeholder {
+  color: #888;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.radar-placeholder--error {
+  color: #f87171;
 }
 
 @media (prefers-color-scheme: light) {
